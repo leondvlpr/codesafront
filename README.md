@@ -1,27 +1,39 @@
-# Crdcodesafront
+# CRUD FRONT
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
-## Development server
+## Servidor de desarrollo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Inicialmente ejecuta `npm install` para instalar las dependenciass del proyecto.
 
-## Code scaffolding
+Seguidamente Ejecuta `ng serve` para iniciar un servidor de desarrollo. Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionamiento
 
-## Build
+El proyecto consta de las siguientes acciones:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## GET
 
-## Running unit tests
+### FACTURA (INVOICE)
+Para obtener todas las facturas creadas (invoices) se realiza una petición GET a la ruta `/api/invoice`. La respuesta retornará un array de objetos JSON con los datos de las facturas creadas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### RECURSO (RESOURCE)
+Para obtener todos los recursos (resources) creados que se deseen relacionar en la factura se realiza una petición GET a la ruta `/api/resources`.
 
-## Running end-to-end tests
+## POST
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### FACTURA (INVOICE)
+-Para crear una invoice se realiza una petición POST a la ruta `/api/invoice/create`, este recibe el body en formato JSON con las keys necesarias para crear una factura.
 
-## Further help
+-Para actualizar una invoice se realiza una petición POST a la ruta `/api/invoice/update`, este recibe el body en formato JSON con las keys necesarias para actualizar una factura.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### RECURSO (RESOURCE)
+-Para crear un recurso se realiza una petición POST a la ruta `/api/resources/create`, este recibe el body en formato JSON con las keys necesarias para crear un recurso.
+
+## DELETE
+
+### FACTURA (INVOICE)
+-Para eliminar una invoice se realiza una petición DELETE a la ruta `/api/invoice/delete/{id}`, donde `{id}` es el id de la invoice que se desea eliminar.
+
+### NOTIFICACIONES
+-Las respuestas de los diferentes endpoints se pintan en la vista de usuario por medio de un componente de notificaciones de la librería primeNG.
