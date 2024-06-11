@@ -31,6 +31,7 @@ export class AppComponent {
   selectedResources: any[] = [];
   selectedIndex: number = -1;
   isEditMode: boolean = false;
+  checkRequired: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private resourceService: ResourceService,
@@ -69,6 +70,9 @@ export class AppComponent {
   handleTypeSubmit() {
     if (this.invoiceManagerForm.invalid) {
       this.invoiceManagerForm.markAllAsTouched();
+      return;
+    } else if (this.selectedResources.length === 0) {
+      this.checkRequired = true;
       return;
     }
     if (this.isEditMode) {
@@ -209,6 +213,7 @@ export class AppComponent {
     this.selectedResources = [];
     this.getResourceData();
     this.resourceManagerForm.reset();
+    this.checkRequired = false;
   }
 
   clearEditMode() {
